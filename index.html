@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Name Page</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Black background */
+            color: white; /* Text color */
+        }
+        .name {
+            font-size: 80px; /* Increased font size to 80px */
+            margin-bottom: 20px;
+        }
+        .letter {
+            display: inline-block; /* Allow individual animation */
+            color: rgb(255, 255, 255); /* White base color for the letters */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 1), 0 0 15px rgba(135, 206, 235, 1); /* RGB white and sky blue glow */
+            animation: glow 1.5s infinite alternate; /* Animation */
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px rgba(255, 255, 255, 1), 0 0 15px rgba(135, 206, 235, 1);
+            }
+            to {
+                text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 25px rgba(135, 206, 235, 1);
+            }
+        }
+        .choices {
+            display: flex;
+            gap: 20px;
+        }
+        .choice {
+            padding: 10px 20px;
+            border: 2px solid #fff; /* White border */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: white; /* Text color */
+        }
+        .choice:hover {
+            background-color: #444; /* Darker gray on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="name" id="nameDisplay"></div>
+    <div class="choices">
+        <a href="/purple-flowers.html" class="choice">Flower</a>
+        <a href="/letter.html" class="choice">Letter</a>
+    </div>
+
+    <script>
+        // Example of a dynamic name, can be set here
+        const userName = "ALIEZA"; // Replace with any name you prefer
+        const nameDisplay = document.getElementById('nameDisplay');
+
+        // Function to display each letter with animation
+        function displayName(name) {
+            nameDisplay.innerHTML = ''; // Clear previous content
+            for (let letter of name) {
+                const span = document.createElement('span');
+                span.textContent = letter;
+                span.className = 'letter';
+                span.style.animationDelay = `${Math.random() * 0.5}s`; // Random delay for animation
+                nameDisplay.appendChild(span);
+            }
+        }
+
+        displayName(userName); // Display the name
+    </script>
+
+</body>
+</html>
